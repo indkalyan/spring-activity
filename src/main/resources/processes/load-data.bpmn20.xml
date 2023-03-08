@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- origin at X=0.0 Y=0.0 -->
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://activiti.com/modeler" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="Definitions_1" modeler:version="1.0ev" modeler:exportDateTime="20170726123124" modeler:modelId="1005315" modeler:modelVersion="1" modeler:modelLastUpdated="1501068675875" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.4.RC1-v20220528-0836-B1" targetNamespace="http://www.activiti.org/processdef">
+  <process id="load-data" name="load-data" isExecutable="true">
+    <startEvent id="startEvent" name="startEvent">
+      <outgoing>sequence-flow-1</outgoing>
+    </startEvent>
+    <sequenceFlow id="sequence-flow-1" sourceRef="startEvent" targetRef="A"/>
+    <userTask id="A" name="corrected">
+      <documentation id="Documentation_2"><![CDATA[Data corrected by the user]]></documentation>
+      <incoming>sequence-flow-1</incoming>
+      <outgoing>SequenceFlow_1</outgoing>
+      <ioSpecification id="InputOutputSpecification_3">
+        <inputSet id="InputSet_3" name="Input Set 3"/>
+        <outputSet id="OutputSet_3" name="Output Set 3"/>
+      </ioSpecification>
+      <potentialOwner id="PotentialOwner_1">
+        <resourceAssignmentExpression id="ResourceAssignmentExpression_1">
+          <formalExpression id="FormalExpression_1">ROLE_USER</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <endEvent id="endEvent" name="endEvent">
+      <incoming>SequenceFlow_2</incoming>
+    </endEvent>
+    <userTask id="UserTask_1" name="Approved">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </userTask>
+    <sequenceFlow id="SequenceFlow_1" sourceRef="A" targetRef="UserTask_1"/>
+    <sequenceFlow id="SequenceFlow_2" sourceRef="UserTask_1" targetRef="endEvent"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_load-data">
+    <bpmndi:BPMNPlane id="BPMNPlane_load-data" bpmnElement="load-data">
+      <bpmndi:BPMNShape id="BPMNShape_startEvent" bpmnElement="startEvent">
+        <omgdc:Bounds height="30.0" width="30.0" x="60.0" y="193.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_1" labelStyle="BPMNLabelStyle_1">
+          <omgdc:Bounds height="15.0" width="54.0" x="48.0" y="223.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_endEvent" bpmnElement="endEvent">
+        <omgdc:Bounds height="28.0" width="28.0" x="730.0" y="187.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_2" labelStyle="BPMNLabelStyle_1">
+          <omgdc:Bounds height="15.0" width="51.0" x="719.0" y="215.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_A" bpmnElement="A">
+        <omgdc:Bounds height="80.0" width="100.0" x="170.0" y="266.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_3" labelStyle="BPMNLabelStyle_1">
+          <omgdc:Bounds height="15.0" width="51.0" x="194.0" y="298.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_UserTask_1" bpmnElement="UserTask_1" isExpanded="true">
+        <omgdc:Bounds height="82.0" width="151.0" x="360.0" y="266.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_5" labelStyle="BPMNLabelStyle_1">
+          <omgdc:Bounds height="15.0" width="51.0" x="410.0" y="299.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequence-flow-1" bpmnElement="sequence-flow-1" sourceElement="BPMNShape_startEvent" targetElement="BPMNShape_A">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="75.0" y="223.0"/>
+        <omgdi:waypoint xsi:type="omgdc:Point" x="75.0" y="306.0"/>
+        <omgdi:waypoint xsi:type="omgdc:Point" x="170.0" y="306.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_A" targetElement="BPMNShape_UserTask_1">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="270.0" y="306.0"/>
+        <omgdi:waypoint xsi:type="omgdc:Point" x="315.0" y="306.0"/>
+        <omgdi:waypoint xsi:type="omgdc:Point" x="360.0" y="307.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_6"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_UserTask_1" targetElement="BPMNShape_endEvent">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="511.0" y="307.0"/>
+        <omgdi:waypoint xsi:type="omgdc:Point" x="744.0" y="307.0"/>
+        <omgdi:waypoint xsi:type="omgdc:Point" x="744.0" y="215.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_8"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
+      <omgdc:Font name="arial" size="9.0"/>
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</definitions>
